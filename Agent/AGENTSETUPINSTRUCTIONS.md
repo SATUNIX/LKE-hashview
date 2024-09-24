@@ -24,17 +24,19 @@ This guide provides step-by-step instructions to deploy the Hashview server and 
 ### Step 1: Set Up MySQL
 
 1. Update the package list and install MySQL server:
-   ```bash
-   sudo apt update
-   sudo apt install mysql-server
-   ```
+
+```bash
+sudo apt update
+sudo apt install mysql-server
+```
 
 2. Start MySQL service and secure the installation:
 
-  ```bash
-  sudo service mysql start
-  sudo mysql_secure_installation
-  ```
+```bash
+sudo service mysql start
+sudo mysql_secure_installation
+```
+
 3. Log into MySQL and create a database and user for Hashview:
 
 ```bash
