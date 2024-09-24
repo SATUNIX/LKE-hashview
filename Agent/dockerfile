@@ -1,0 +1,26 @@
+
+FROM debian:latest
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip wget tar && \
+    apt-get clean
+
+# set working directory
+WORKDIR /opt/hashview
+
+#agent tarball needs to be accessible 
+COPY hashview-agent.<version>.tgz /opt/hashview/
+
+
+RUN tar -xzvf hashview-agent.<version>.tgz && \
+    cp -r hashview-agent/* .
+
+# Install Python dependencies
+RUN pip3 install -r requirements.txt
+
+# Expose the port if needed (if the agent uses a specific port)
+# EXPOSE 8000
+
+
+CMD ["python3", "./hashview-agent.py"]
